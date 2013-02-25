@@ -1,4 +1,9 @@
-# EasyMock Server
+# EasyMock Server with EJS
+
+## Differences from original easymock
+
+* templating with ejs
+* able to respond html (or other arbitrary formats).
 
 ## Usage
 
@@ -49,7 +54,7 @@ Variables that you define in your config.json can be used in files that have the
 
 Example to use variables. item_get.json:
 
-        { "image": "#{server}/img.jpg" }
+        { "image": "<%- vars.server %>/img.jpg" }
 
 This will return:
 
@@ -60,7 +65,7 @@ The routes defined in the config.json will get mapped to one corresponding file 
 
 With the above config.json a call to GET /user/1234 would get mapped to the file: /user/userid_get.json. Inside that file one could write:
 
-    { "id": #{userid} }
+    { "id": <%- params.userid %> }
 
 If this is the file, the result would be ```{ "userid": 1234 }```
 
@@ -75,7 +80,7 @@ For that create a folder "_templates" and in it place for example a file object.
 
 Then you can refer this template out of another file like items_get.json:
 
-        [ "{{object}}", "{{object}}", "{{object}}", "{{object}}"" ]
+        [ <%- load('object') %>, <%- load('object') %>, <%- load('object') %>, <%- load('object') %>]
 
 This will return a array with four times the object from the template.
 
@@ -84,17 +89,17 @@ This will return a array with four times the object from the template.
 You can even use parameters. For example you have a template Object.json:
 
          {
-            "name": "Item #{_1}",
-            "image": "#{server}/img/img_#{_2}.jpg",
-            "active": #{_3}
+            "name": "Item <%- params[0] %>",
+            "image": "<%- vars.server %>/img/img_<%- params[1] %>.jpg",
+            "active": <%- params[2]
           }
 
 And then a api object called items_get.json:
 
           [
-            "{{Object(1,one,true)}}",
-            "{{Object(2,two,false)}}",
-            "{{Object(3,three,true)}}"
+            <%- load('Object',[1,"one",true]) %>,
+            <%- load('Object',[2,"two",false]) %>,
+            <%- load('Object',[3,"three",true]) %>
           ]
 
 You will receive the following response:
