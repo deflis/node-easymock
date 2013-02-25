@@ -4,6 +4,7 @@
 
 * templating with ejs
 * able to respond html (or other arbitrary formats).
+* able to send static file dynamically
 
 ## Usage
 
