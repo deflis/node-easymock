@@ -1,5 +1,5 @@
 {
-  "name": "Item #{_1}",
-  "image": "#{server}/img/img_#{_2}.jpg",
-  "active": #{_3}
+  "name": "Item <%- params[0] %>",
+  "image": "<%- vars.server %>/img/img_<%- params[1] %>.jpg",
+  "active": <%- params[2] %>
 }

@@ -1,4 +1,4 @@
 {
-  "id": #{_1},
-  "nested": {{Nested2(#{_1})}}
+  "id": <%- params[0] %>,
+  "nested": <%- load('Nested2', [params[0]]) %>
 }

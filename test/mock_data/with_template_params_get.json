@@ -1,5 +1,5 @@
 [
-  "<%- load('ObjectWithParams', [1,one,true]) -%>",
-  "<%- load('ObjectWithParams', [2,two,false]) -%>",
-  "<%- load('ObjectWithParams', [3,three,true]) -%>"
+  <%- load('ObjectWithParams', [1,"one",true]) -%>,
+  <%- load('ObjectWithParams', [2,"two",false]) -%>,
+  <%- load('ObjectWithParams', [3,"three",true]) -%>
 ]

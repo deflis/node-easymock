@@ -1,3 +1,3 @@
 {
-  "name": "Object #{_1}"
+  "name": "Object <%- params.arg -%>"
 }
