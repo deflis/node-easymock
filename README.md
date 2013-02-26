@@ -7,7 +7,7 @@
 * send static file dynamically (> @static any.txt)
 * support command line options (-p, -c, ...)
 * multi server listening (bin/multimock)
-* route matching with patterns (:any, :alnum, :num, :alpha)
+* route matching with patterns (:any, :alnum, :num, ...)
 
 ## Usage
 
