@@ -13,6 +13,7 @@
       , "jade":        "0.27.7"
       , "underscore":  "1.4.2"
       , "broware":     "0.1.0"
+      , "opts":        "1.2.2"
     }
   , "devDependencies": {
       "chai":          "1.1.0"
