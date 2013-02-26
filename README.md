@@ -5,7 +5,7 @@
 * template with ejs
 * respond html or any other formats
 * send static file dynamically (> @static any.txt)
-* suupport command line options (-p, -c, ...)
+* support command line options (-p, -c, ...)
 * multi server listening (bin/multimock)
 * route matching with patterns (:any, :alnum, :num, :alpha)
 
