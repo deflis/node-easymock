@@ -8,6 +8,12 @@ var options = [
     value: true,
   },
   {
+    short: 'P',
+    long: 'path',
+    description: 'Running path | default:current directory',
+    value: true,
+  },
+  {
     short: 'c',
     long: 'config',
     description: 'Config file | default:config.json',
@@ -23,6 +29,7 @@ opts.parse(options, true);
 
 var mockOptions = {
   port: opts.get('p') || 3000,
+  path: opts.get('P'),
   config: opts.get('c'),
   log_enabled: !opts.get('nolog'),
 };
