@@ -1,0 +1,53 @@
+#!/usr/bin/env node
+
+// default package
+var fs = require('fs');
+var proc = require('child_process');
+var isWin = process.platform === 'win32';
+
+multiStart();
+
+function multiStart() {
+  try {
+    var config = JSON.parse(fs.readFileSync('multiconfig.json', 'utf8'));
+    var serverCount = config.servers.length;
+  }
+  catch (e) {
+    console.log(e);
+    process.exit();
+  }
+
+  for (var i=0; i<serverCount; i++) {
+    var server = config.servers[i];
+    if (!server.path || !server.port) {
+      console.log("unknown server config:");
+      console.log(server);
+      continue;
+    }
+    createChild(server.path, server.port);
+  }
+}
+
+function createChild(path, port) {
+  var shell = isWin ? 'cmd' : 'sh';
+  var switch = isWin ? '/c' : '-c';
+  var bin = __dirname + '/easymock';
+  var child = proc.spawn(shell, [switch, process.argv[0], bin, '-p', port, '-P', path])
+
+  child.stdout.on('data', function(data) {
+    console.log("\n" + path + ":");
+    console.log(data.toString().trimRight());
+  });
+
+  child.stderr.on('data', function(data) {
+    console.log("\n" + path + ":");
+    console.log(data.toString().trimRight());
+  });
+
+  child.on('exit', function(code) {
+    if (code !== 0) {
+      console.log('child process(' + path + ') exited with code ' + code);
+    }
+  });
+}
+
