@@ -2,11 +2,12 @@
 
 ## Differences from original easymock
 
-* templating with ejs
-* respond html (or other arbitrary formats).
-* send static file dynamically
-* suupport command line arguments
-* multi process runnable
+* template with ejs
+* respond html or any other formats
+* send static file dynamically (> @static any.txt)
+* suupport command line options (-p, -c, ...)
+* multi server listening (bin/multimock)
+* route matching with patterns (:any, :alnum, :num, :alpha)
 
 ## Usage
 
