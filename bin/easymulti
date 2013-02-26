@@ -30,9 +30,9 @@ function multiStart() {
 
 function createChild(path, port) {
   var shell = isWin ? 'cmd' : 'sh';
-  var switch = isWin ? '/c' : '-c';
+  var switchOption = isWin ? '/c' : '-c';
   var bin = __dirname + '/easymock';
-  var child = proc.spawn(shell, [switch, process.argv[0], bin, '-p', port, '-P', path])
+  var child = proc.spawn(shell, [switchOption, process.argv[0], bin, '-p', port, '-P', path])
 
   child.stdout.on('data', function(data) {
     console.log("\n" + path + ":");
