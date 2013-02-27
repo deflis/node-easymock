@@ -2,7 +2,7 @@
 
 ## Differences from original easymock
 
-* template with ejs
+* template with ejs (non compatible)
 * respond html or any other formats
 * send static file dynamically (> @static any.txt)
 * support command line options (-p, -c, ...)
