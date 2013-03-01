@@ -9,9 +9,19 @@
 * multi server listening (bin/multimock)
 * route matching with patterns (:any, :alnum, :num, ...)
 
-## Usage
+## Install
 
-        $ npm install -g easymock
+        #
+        # replace {INSTALL_DIR} with directory that you want to install
+        #
+
+        $ git clone https://github.com/tomoemon/node-easymock.git
+        $ mv node-easymock {INSTALL_DIR}
+        $ cd {INSTALL_DIR}/node-easymock
+        $ npm install
+        $ # add "{INSTALL_DIR}/node-easymock/bin" to $PATH
+
+## Usage
         $ easymock
 
 ---------
