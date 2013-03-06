@@ -75,8 +75,8 @@ This will return:
 
         { "image": "http://server.com/img.jpg"}
 
-### Queries/Headers
-In addition to variables, Request query parameters and headers can be used in template (_get/_post/...).
+### Queries and Headers
+In addition to variables, request query parameters and headers can be used in template (_get/_post/...).
 
 Example to use queries. item_get.json:
 
