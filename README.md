@@ -3,10 +3,11 @@
 ## Differences from original easymock
 
 * template with ejs (non compatible)
+* query parameters and request headers are usable in template (query, headers)
 * respond html or any other formats
 * send static file dynamically (> @static any.txt)
 * support command line options (-p, -c, ...)
-* multi server listening (bin/multimock)
+* multi port listening (bin/multimock)
 * route matching with patterns (:any, :alnum, :num, ...)
 
 ## Install
@@ -73,6 +74,21 @@ Example to use variables. item_get.json:
 This will return:
 
         { "image": "http://server.com/img.jpg"}
+
+### Queries/Headers
+In addition to variables, Request query parameters and headers can be used in template (_get/_post/...).
+
+Example to use queries. item_get.json:
+
+        {
+          "image": "sample.<%- query.format %>",
+        }
+
+When you request 'GET /item?format=jpg', this will return:
+
+        { "image": "sample.jpg" }
+
+Headers can be referred by "headers" keyword.
 
 ### Routes
 The routes defined in the config.json will get mapped to one corresponding file in which the given name will be available as a variable.
