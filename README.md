@@ -80,15 +80,27 @@ In addition to variables, Request query parameters and headers can be used in te
 
 Example to use queries. item_get.json:
 
-        {
-          "image": "sample.<%- query.format %>",
-        }
+        { "image": "sample.<%- query.format %>" }
 
 When you request 'GET /item?format=jpg', this will return:
 
         { "image": "sample.jpg" }
 
-Headers can be referred by "headers" keyword.
+Headers can be referred by "headers" keyword as below.
+
+        <% if (headers['User-Agent'].indexOf('Firefox') >= 0){ %>
+        { "image": "sample.jpg" }
+        <% } else { %>
+        { "image": "" }
+        <% } %>
+
+Requesting with Firefox, this will return:
+
+        { "image": "sample.jpg" }
+
+Otherwise, this will return:
+
+        { "image": "" }
 
 ### Routes
 The routes defined in the config.json will get mapped to one corresponding file in which the given name will be available as a variable.
